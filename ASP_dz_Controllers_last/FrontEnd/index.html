@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Асинхронная функция для получения и вставки HTML
+        async function insertHTML() {
+            try {
+                const response = await fetch('https://localhost:7114/Products'); // Отправляем запрос
+                if (!response.ok) {
+                    throw new Error(response.status);
+                }
+                const html = await response.text();
+                document.open();
+                document.write(html);
+                document.close();
+            } catch (error) {
+                console.error(error);
+                document.body.innerHTML = '<p>Failed to load content</p>';
+            }
+        }
+
+        // Вызываем функцию вставки
+        insertHTML();
+    </script>
+</body>
+</html>
