@@ -11,12 +11,13 @@
     <header class="bg-primary text-white p-3 d-flex navbar">
        <h3><a class="nav-item text-white" href="@Url.Action("Index", "Home")">Shop App</a></h3>
        <div class="d-flex align-items-center gap-3">
-           <a class="nav-item text-white" asp-controller="Products" asp-action="Index">Products</a>
             @if (!User.Identity.IsAuthenticated)
             {
                 <div>
                     <a class="nav-item text-white" href="./User/Create.html">Register</a>
                     <a class="nav-item text-white" href="./User/Login.html">Login</a>
+                    <a class="nav-item text-white" href="./Order/OrderAdd.html">Add Order</a>
+                    <a class="nav-item text-white" href="./Order/Orders.html">Orders</a>
                 </div>
             }
             else

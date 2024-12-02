@@ -1,5 +1,6 @@
 ﻿using ASPCore_MVC.DbContext;
 using ASPCore_MVC.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASPCore_MVC.Services
@@ -23,14 +24,14 @@ namespace ASPCore_MVC.Services
         {
             Context = context;
         }
-        public async Task<Order?> Create(Order order)
+        public async Task<Order?> Create([FromBody] Order order)
         {
             await Context.Orders.AddAsync(order);
             await Context?.SaveChangesAsync();
-            foreach(var p in Context.Orders)
-            {
-                Console.WriteLine($"Buyer: {p.UserId} Product: {p.ProductId} Count: {p.Count}");
-            }
+            //foreach(var p in Context.Orders)
+            //{
+            //    Console.WriteLine($"Buyer: {p.UserId} Product: {p.ProductId} Count: {p.Count}");
+            //}
             return order;
         }
 

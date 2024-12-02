@@ -10,7 +10,7 @@ namespace ASPCore_MVC.Controllers.API
 {
     [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class APIOrdersController : Controller
     {
         private readonly IOrdersService? _ordersService;
@@ -29,12 +29,12 @@ namespace ASPCore_MVC.Controllers.API
         {
             return Json(await _ordersService.Read());
         }
-        [HttpGet]
+        [HttpGet("2")]
         public async Task<IActionResult> ReadByProductId(int productId)
         {
             return Json(await _ordersService.ReadByProductId(productId));
         }
-        [HttpGet]
+        [HttpGet("3")]
         public async Task<IActionResult> ReadByUserId(string userId)
         {
             return Json(await _ordersService.ReadByUserId(userId));
